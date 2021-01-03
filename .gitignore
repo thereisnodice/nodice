@@ -1,12 +1,22 @@
+# go-cehttp
 /src/go-cqhttp/*
 !go-cqhttp.exe
 !faststart.bat
+
+# 配置文件
 config.py
 bot_config.py
+
+# 未开发完成的插件
 csu_class
 webhook
 plugins
 draw
-__pycache__
 group_manger
+
+# python
+__pycache__
+
+# 数据库
 *.json
+*.db
