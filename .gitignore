@@ -1,3 +1,12 @@
-*.*
-/*/
-!.gitignore
+/src/go-cqhttp/*
+!go-cqhttp.exe
+!faststart.bat
+config.py
+bot_config.py
+csu_class
+webhook
+plugins
+draw
+__pycache__
+group_manger
+*.json
