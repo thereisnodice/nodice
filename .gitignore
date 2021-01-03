@@ -10,7 +10,6 @@ bot_config.py
 # 未开发完成的插件
 csu_class
 webhook
-plugins
 draw
 group_manger
 
