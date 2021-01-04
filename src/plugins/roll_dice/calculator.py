@@ -1,7 +1,7 @@
 import random
 import re
 
-# 替换标准骰子及惩罚奖励骰(3d6, 4d6k3)
+# 标准骰子
 def dice_caculator(dice_expression):
 
     is_show_detail=False
@@ -36,7 +36,7 @@ def dice_caculator(dice_expression):
         dice_count+=dice_result_list[i]
     if is_show_detail:
         message+=' ]'
-    message+=' = '+str(dice_count)
+    message+=' = '+str(dice_count)+'\n'
     count=0
 
     return message.upper()

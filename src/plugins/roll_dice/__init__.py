@@ -4,7 +4,8 @@ from .calculator import *
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
     '用法：\n'
-    'TO DO'
+    '.r 2d3\n'
+    '注意这里是有空格的,目前暂时不支持加减乘除\n'
 )
 
 @on_command('roll', aliases=('r','掷骰'),only_to_me=False)
