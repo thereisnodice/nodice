@@ -34,7 +34,7 @@ SUPPORTED_LANGUAGES = {
 }
 
 
-@on_command(('code_runner', 'run'), aliases=['run', '运行代码', '运行'],
+@on_command(('exec'), aliases=['运行代码', '运行'],
             only_to_me=False)
 async def run(session: CommandSession):
     supported_languages = ", ".join(sorted(SUPPORTED_LANGUAGES.keys()))
