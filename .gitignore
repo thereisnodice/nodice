@@ -7,10 +7,8 @@
 config.py
 bot_config.py
 
-# 未开发完成的插件
+# 闭源插件
 csu_class
-webhook
-draw
 
 # python
 __pycache__
@@ -18,3 +16,6 @@ __pycache__
 # 数据库
 *.json
 *.db
+
+# VScode任务
+!tasks.json
