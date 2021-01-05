@@ -1,6 +1,7 @@
 import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
-from nonebot import CommandSession, on_command, permission,call_command
+from nonebot import CommandSession, on_command, permission
+from nonebot.command import call_command
 from .version import *
 
 __plugin_name__ = '[E][A]update'
