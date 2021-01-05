@@ -1,5 +1,5 @@
 import nonebot
-import bot_config
+from __version__ import *
 
 from nonebot import on_command, CommandSession
 
@@ -13,7 +13,7 @@ async def _(session: CommandSession):
     if not arg:
         # 如果用户没有发送参数，则发送功能列表
         await session.send(
-            'NoDice by jigsaw version '+bot_config.VERSION+
+            'NoDice by jigsaw version '+VERSION+
             '\n我现在支持的功能有：\n' + '\n'.join(p.name for p in plugins))
         return
 
