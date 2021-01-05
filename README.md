@@ -1,7 +1,7 @@
 <div align="center">
 	<img width="128" src="docs/nodice.png" alt="logo"></br>
 
-# NODICE
+# NoDice
     
 *基于[ nonebot ](https://github.com/nonebot/nonebot)以及[ go-cqhttp ](https://github.com/Mrs4s/go-cqhttp)轻量化QQ跑团掷骰机器人*
 
@@ -17,13 +17,19 @@
 
 - 理论上来说 `plugin` 文件夹里的所有插件都可以在 nonebot 框架的机器人上面即插即用。
 
-### TO DO List
+### Feature/TO DO List
 
-- [ ] 热更新（没有这个功能部署服务器太麻烦，所以会放在首位）
+- [x] Git热更新
 - [ ] Github Webhook 推送
-- [ ] 原Dice! 的牌堆功能
+- [x] 原Dice! 的牌堆功能
 - [ ] 各音乐平台点歌
 - [ ] 机器人分群管理
 - [ ] CoC、DnD、FATE掷骰
 
-~~是的，目前除了 Logo 和简介以及 TO DO List外什么也没有。~~
+~~是的，目前除了 Logo 和简介以及 TO DO List 还有版权外什么也没有。~~
+
+### Lisence
+
+go-cqhttp下的文件 ([go-cqhttp](https://github.com/Mrs4s/go-cqhttp) 的可执行程序) 保持使用原 [AGPL-3.0 License](https://github.com/Mrs4s/go-cqhttp/blob/master/LICENSE) 许可
+
+项目中其余内容使用 MIT License
