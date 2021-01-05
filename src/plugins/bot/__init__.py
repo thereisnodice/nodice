@@ -4,7 +4,7 @@ import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
 import os
 
-VERSION='0.10.11_α'
+VERSION='0.10.12_α'
 
 __plugin_name__ = 'bot'
 __plugin_usage__ = """
@@ -23,7 +23,6 @@ async def bot(session: CommandSession):
 async def reload(session: CommandSession):
     for f in os.listdir('./plugins/'):
         if f != '__pycache__' :
-            await session.send(f)
             plugin_path = 'plugins.' + os.path.splitext(f)[0]
             ret = reload_plugin(plugin_path)
             if not ret:
