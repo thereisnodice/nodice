@@ -16,7 +16,7 @@ def dice_caculator(dice_expression):
     except:dice_face=100
     try:dice_pick=int(match_result.group(7))
     except:dice_pick=dice_num
-    roll_reason=int(match_result.group(8))
+    roll_reason=match_result.group(8)
     
     if not round_num or round_num>10:return '非法轮数'
     if not dice_num or dice_num>100:return '非法骰数'
