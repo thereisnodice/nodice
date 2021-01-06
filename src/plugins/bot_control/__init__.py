@@ -4,8 +4,6 @@ import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
 import os
 
-VERSION='0.10.20_α'
-
 __plugin_name__ = '[A]bot'
 __plugin_usage__ = """
 [A]bot 查看版本信息
@@ -48,4 +46,7 @@ async def update(session: CommandSession):
         await session.send(f"Fail to update: {e}")
 
 async def version(session: CommandSession):
+    f=open('./plugins/bot_control/VERSION','r',encoding='utf=8')
+    VERSION=f.read()
+    f.close()
     await session.send('NoDice by Jigsaw Version '+VERSION)
