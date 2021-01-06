@@ -41,9 +41,9 @@ async def update(session: CommandSession):
     try:
         output = subprocess.run(['git', 'pull'], stdout=PIPE, stderr=STDOUT).stdout.decode('utf-8').strip()
         msg = output.replace('https://', '').replace('http://', '') # 防止QQ将链接渲染为卡片
-        await session.send(msg.strip())
-        await reload(session)
-        await version(session)
+        session.send(msg.strip())
+        reload(session)
+        version(session)
     except CalledProcessError as e:
         await session.send(f"Fail to update: {e}")
 
