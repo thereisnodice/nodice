@@ -23,7 +23,7 @@ def dice_caculator(dice_expression):
     if not dice_face or dice_face>1000:return '非法骰面'
     if not dice_pick or dice_pick>dice_num:return '非法骰数'
 
-    message='由于 '+roll_reason+' 掷出了:\n'
+    if roll_reason:message='由于 '+roll_reason+' 掷出了:\n'
     for round in range(round_num):
         dice_result_list=[]
         for i in range(dice_num):
