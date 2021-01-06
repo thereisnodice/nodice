@@ -12,7 +12,7 @@ async def sg(session: CommandSession):
     try:round_num=int(session.current_arg_text.strip())
     except:round_num=1
     message=''
-    if not round_num or round_num>10:return '非法轮数'
+    if not round_num or round_num>10:await session.send('非法轮数')
     for round in range(round_num):
         attr=[]
         for i in range(6):
@@ -25,11 +25,11 @@ async def sg(session: CommandSession):
     await session.send(message)
 
 @on_command('sk', aliases=('时空之轮'),only_to_me=False)
-async def sg(session: CommandSession):
+async def sk(session: CommandSession):
     try:round_num=int(session.current_arg_text.strip())
     except:round_num=1
     message=''
-    if not round_num or round_num>10:return '非法轮数'
+    if not round_num or round_num>10:await session.send('非法轮数')
     for round in range(round_num):
         attr=[]
         for i in range(7):
