@@ -7,7 +7,8 @@
 config.py
 bot_config.py
 
-# 闭源插件
+# 闭源或未开发完成插件
+sqlite.py
 csu_class
 
 # python

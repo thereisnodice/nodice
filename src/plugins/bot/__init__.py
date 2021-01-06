@@ -4,11 +4,11 @@ import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
 import os
 
-VERSION='0.10.13_α'
+VERSION='0.10.14_α'
 
-__plugin_name__ = 'bot'
+__plugin_name__ = '[A]bot'
 __plugin_usage__ = """
-bot 查看版本信息
+[A]bot 查看版本信息
 [A]bot reload 重载插件
 [EA]bot update 使用git pull更新
 """
