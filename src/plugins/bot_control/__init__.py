@@ -4,7 +4,7 @@ import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
 import os
 
-VERSION='0.10.18_α'
+VERSION='0.10.20_α'
 
 __plugin_name__ = '[A]bot'
 __plugin_usage__ = """

@@ -24,7 +24,8 @@ def dice_caculator(dice_expression):
     if not dice_pick or dice_pick>dice_num:return '非法骰数'
 
     message=''
-    if roll_reason:message+='由于 '+roll_reason+' 掷出了:\n'
+    if roll_reason:message+='由于'+roll_reason
+    message+='掷出了:\n'
     for round in range(round_num):
         dice_result_list=[]
         for i in range(dice_num):

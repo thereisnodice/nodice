@@ -1,7 +1,6 @@
-# go-cehttp
+# go-cqhttp
 /go-cqhttp/*
 !go-cqhttp.exe
-!faststart.bat
 
 # 配置文件
 config.py
