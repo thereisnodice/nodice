@@ -7,7 +7,7 @@ def dice_caculator(dice_expression):
     is_show_detail=True
 
     # 匹配标准掷骰
-    match_result=re.search(r"(([0-9]*)#)?(([0-9]*)d([0-9]*))?(k([0-9]*))?",dice_expression.lower())
+    match_result=re.search(r"(([0-9]*)#)?(([0-9]*)d([0-9]*))?(k([0-9]*))?(.*)",dice_expression.lower())
     try:round_num=int(match_result.group(2))
     except:round_num=1
     try:dice_num=int(match_result.group(4))
@@ -16,13 +16,14 @@ def dice_caculator(dice_expression):
     except:dice_face=100
     try:dice_pick=int(match_result.group(7))
     except:dice_pick=dice_num
+    roll_reason=int(match_result.group(8))
     
     if not round_num or round_num>10:return '非法轮数'
     if not dice_num or dice_num>100:return '非法骰数'
     if not dice_face or dice_face>1000:return '非法骰面'
     if not dice_pick or dice_pick>dice_num:return '非法骰数'
 
-    message=''
+    message='由于 '+roll_reason+' 掷出了:\n'
     for round in range(round_num):
         dice_result_list=[]
         for i in range(dice_num):
