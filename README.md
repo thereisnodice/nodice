@@ -19,12 +19,20 @@
 
 ### Feature/TO DO List
 
-- [x] Git热更新
+- [x] Git热更新 `.bot update` （容易造成文件损坏）
+- [x] 重载插件 `.bot reload`
+- [x] 标准掷骰 `.r 4#3d6k2` （目前缺少掷骰原因）
+- [x] 天气查询 `.weather` （目前NLP有bug）
+- [ ] 在线IDE `.exec python`
 - [ ] Github Webhook 推送
-- [x] 原Dice! 的牌堆功能
+- [x] 原Dice! 的牌堆功能 `.draw 牌堆`
 - [ ] 各音乐平台点歌
 - [ ] 机器人分群管理
-- [ ] CoC、DnD、FATE掷骰
+- [x] 人物作成 `.sg/sk` （COC、DND待添加）
+- [ ] COC检定与奖惩骰
+- [ ] 使用说明 `.help`
+- [ ] 数据库（与其他插件对接）
+- [x] CSU课表查询 `.csu`（此功能不开源）
 
 ~~是的，目前除了 Logo 和简介以及 TO DO List 还有版权外什么也没有。~~
 
