@@ -19,13 +19,13 @@ async def bot(session: CommandSession):
     else:await version(session)
 
 async def reload(session: CommandSession):
-    plugin_list=set()
+    plugin_list=[]
     for p in get_loaded_plugins():
-        plugin_list.add(p.module.__name__)
+        plugin_list.append(p.module.__name__)
     for f in os.listdir('./plugins/'):
         if f!='__pycache__':
             plugin_path = 'plugins.' + os.path.splitext(f)[0]
-            plugin_list.add(plugin_path)
+            plugin_list.append(plugin_path)
     for plugin_path in plugin_list:
         ret = reload_plugin(plugin_path)
         if not ret:
