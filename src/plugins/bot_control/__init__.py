@@ -46,7 +46,7 @@ async def update(session: CommandSession):
         await session.send(f"Fail to update: {e}")
 
 async def version(session: CommandSession):
-    f=open('./plugins/bot_control/VERSION','r',encoding='utf=8')
+    f=open(os.path.join(os.path.dirname(__file__),'VERSION'),'r',encoding='utf=8')
     VERSION=f.read()
     f.close()
     await session.send('NoDice by Jigsaw Version '+VERSION)
