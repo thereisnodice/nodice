@@ -31,7 +31,7 @@ def dice_caculator(dice_expression):
         for i in range(dice_num):
             dice_result=random.randint(1,dice_face)
             dice_result_list.append(dice_result)
-
+        dice_result_list.sort(reverse=True)
         message_tmp=str(dice_num)+'D'+str(dice_face)
         if(dice_pick<dice_num):message_tmp+='K'+str(dice_pick)
         message_tmp+=' = '
