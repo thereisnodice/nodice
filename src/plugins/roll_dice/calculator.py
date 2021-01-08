@@ -40,9 +40,8 @@ def dice_caculator(dice_expression):
         for i in range(dice_num):
             if is_show_detail:
                 if i:message_tmp+=' + '
-                if i <dice_pick:message_tmp+=str(dice_result_list[i])
+                if i <dice_pick:message_tmp+=str(dice_result_list[i]);dice_count+=dice_result_list[i]
                 else:message_tmp+='('+str(dice_result_list[i])+')'
-            dice_count+=dice_result_list[i]
         if is_show_detail:
             message_tmp+=' ]'
         message_tmp+=' = '+str(dice_count)
