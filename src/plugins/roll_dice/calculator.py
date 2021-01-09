@@ -46,15 +46,17 @@ def extract_roundnum_and_reason(expression):
 def calculate_with_bracket(expression):
 
     try:
-        l=expression[:expression.index('(')]
-        m=expression[expression.index('(')+1:expression.rindex(')')]
-        r=expression[expression.rindex(')')+1:]
-        return str(int(calculate_without_bracket(l+calculate_with_bracket(m)+r)))
+        l=expression[:expression.index(')')]
+        r=expression[expression.index(')')+1:]
+        m=l[l.rindex('(')+1:]
+        l=l[:l.rindex('(')]
+        return calculate_with_bracket(l+str(calculate_without_bracket(m))+r)
     except:
         return str(int(calculate_without_bracket(expression)))
 
 # 计算无括号的表达式
 def calculate_without_bracket(expression):
+
     if '+' in expression:
         l=expression[:expression.index('+')]
         r=expression[expression.index('+')+1:]
