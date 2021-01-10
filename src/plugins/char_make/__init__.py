@@ -5,6 +5,8 @@ __plugin_name__ = '人物作成'
 __plugin_usage__ = (
     'sg 变量之轮（轮回游戏二版）人物作成'
     'sk 时空之轮人物作成'
+    'coc COC7版人物作成（不支持6版）'
+    'dnd DND任务作成'
 )
 
 @on_command('sg', aliases=('轮回游戏'),only_to_me=False)

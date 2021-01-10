@@ -1,5 +1,5 @@
 from nonebot import on_command, CommandSession
-from .calculator import *
+from .calculator import extract_roundnum_and_reason
 
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
