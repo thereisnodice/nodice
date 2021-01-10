@@ -66,7 +66,7 @@ async def coc(session: CommandSession):
             attr_count+=attr_cal.result
             if i:message+=','
             message+=attr_name[i]+':'+str(int(attr_cal.result))
-        message +="\n总计:"+str(int(attr_count-attr_cal.result))+'/'+str(int((attr_count))
+        message +="\n总计:"+str(int(attr_count-attr_cal.result))+'/'+str(int(attr_count))
 
     await session.send(message)
     
@@ -84,7 +84,7 @@ async def coc(session: CommandSession):
         attr_cmd=['4d6k3','4d6k3','4d6k3','4d6k3','4d6k3','4d6k3']
         for i in range(len(attr_name)):
             attr_cal=Calculator(attr_cmd[i])
-            attr_cal.throw_dice()
+            attr_cal.calculate_with_bracket()
             if i:message+=','
             message+=attr_name[i]+':'+str(int(attr_cal.result))
 

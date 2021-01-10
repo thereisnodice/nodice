@@ -35,7 +35,6 @@
 
 ### TO DO List
 
-- 通过松藕合的dice_calculator函数重构人物作成
 - 牌堆类json语言实现
 - 链接sqlite3数据库
 - csu_class可视化
