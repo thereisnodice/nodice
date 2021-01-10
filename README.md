@@ -24,7 +24,7 @@
 - [x] 原Dice! 的牌堆功能 `.draw deckname`
 - [ ] 各音乐平台点歌
 - [ ] 机器人分群管理
-- [x] 人物作成 `.sg/sk` （COC、DND待添加）
+- [x] 人物作成 `.sg/sk/coc/dnd`
 - [ ] COC检定与奖惩骰
 - [ ] 今日人品
 - [x] 使用说明 `.help`

@@ -9,7 +9,7 @@ async def _(session: CommandSession):
     if not arg:
         # 如果用户没有发送参数，则发送功能列表
         await session.send(
-            '\n目前支持的功能有：\n' + '\n'.join(p.name for p in plugins))
+            '\n目前支持的功能有：' + '\n'.join(p.name for p in plugins))
         return
 
     # 如果发了参数则发送相应命令的使用帮助

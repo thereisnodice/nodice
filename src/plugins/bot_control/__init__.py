@@ -4,7 +4,7 @@ import subprocess
 from subprocess import PIPE, STDOUT, CalledProcessError
 import os
 
-__plugin_name__ = '[A]bot'
+__plugin_name__ = '[A]机器人控制'
 __plugin_usage__ = """
 [A]bot 查看版本信息
 [A]bot reload 重载插件
