@@ -12,7 +12,7 @@ __plugin_usage__ = (
 
 @on_command('jrrp', aliases=('今日人品'),only_to_me=False)
 async def jrrp(session: CommandSession):
-    day=str(time.localtime(time.time())[3])
+    day=str(time.localtime(time.time())[2])
     qq_id=str(session.event.user_id)
     try:
         jrrp_data=open(os.path.join(os.path.dirname(__file__),'jrrp_data.json'),'r',encoding='utf-8')
