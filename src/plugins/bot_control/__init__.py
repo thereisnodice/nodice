@@ -19,10 +19,11 @@ async def bot(session: CommandSession):
     else:await version(session)
 
 async def reload(session: CommandSession):
+    plugindir_path=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     plugin_list=[]
     for p in get_loaded_plugins():
         plugin_list.append(p.module.__name__)
-    for f in os.listdir('./plugins/'):
+    for f in os.listdir(plugindir_path):
         if f!='__pycache__':
             plugin_path = 'plugins.' + os.path.splitext(f)[0]
             plugin_list.append(plugin_path)
