@@ -34,9 +34,9 @@
 
 ### TO DO List
 
-- 牌堆类json语言实现
-- 链接sqlite3数据库
-- csu_class可视化
+- 兼容 [SinaNya](https://sinanya.com/) 的 yml 牌堆
+- 链接 sqlite3 数据库
+- csu_class 可视化
 - 接入数据库的群管功能
 
 ### Project for nonebot2
