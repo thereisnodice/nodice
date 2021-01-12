@@ -1,0 +1,4 @@
+pyyaml
+nonebot
+bs4
+requests
