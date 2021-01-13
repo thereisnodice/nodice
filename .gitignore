@@ -13,7 +13,7 @@ csu_class
 # python
 __pycache__
 
-# 数据库
+# 数据存储
 *.json
 *.db
 
