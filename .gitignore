@@ -19,3 +19,7 @@ __pycache__
 
 # VScode任务
 !tasks.json
+
+# 内置牌堆
+!illness.json
+!name.json
