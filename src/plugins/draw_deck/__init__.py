@@ -25,7 +25,7 @@ async def ndraw(session: CommandSession):
 @on_command('name',only_to_me=False)
 async def name(session:CommandSession):
     try:
-        await call_command(session.bot,session.event,'draw',current_arg='_name '+str(int(session.current_arg_text.strip())))
+        await call_command(session.bot,session.event,'draw',current_arg='_name_ '+str(int(session.current_arg_text.strip())))
     except:
         await call_command(session.bot,session.event,'draw',current_arg='_name_'+session.current_arg_text.strip())
 
