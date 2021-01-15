@@ -25,12 +25,12 @@ async def roll_hide(session: CommandSession):
         await session.send(Calculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_fate', aliases=('rf','fate'),only_to_me=False)
-async def roll(session: CommandSession):
+async def roll_fate(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     await session.send(FateCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_fate_hide', aliases=('rfh','fateh'),only_to_me=False)
-async def roll_hide(session: CommandSession):
+async def roll_fate_hide(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     if session.event.message_type=='group':
         await session.send('在群聊'+str(session.event.group_id)+'中暗骰，'
@@ -39,12 +39,12 @@ async def roll_hide(session: CommandSession):
         await session.send(FateCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_wod', aliases=('w','wod'),only_to_me=False)
-async def roll(session: CommandSession):
+async def roll_wod(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_wod_hide', aliases=('wh','wodh'),only_to_me=False)
-async def roll_hide(session: CommandSession):
+async def roll_wod_hide(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     if session.event.message_type=='group':
         await session.send('在群聊'+str(session.event.group_id)+'中暗骰，'
