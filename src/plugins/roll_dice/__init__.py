@@ -43,7 +43,7 @@ async def roll(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
 
-@on_command('roll_wod', aliases=('wh','wodh'),only_to_me=False)
+@on_command('roll_wod_hide', aliases=('wh','wodh'),only_to_me=False)
 async def roll_hide(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     if session.event.message_type=='group':
