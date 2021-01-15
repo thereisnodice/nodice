@@ -46,7 +46,7 @@
 - [ ] COC 房规 `.setcoc`
 - [ ] DND 先攻 `.ri` 
 - [ ] 先攻列表 `.init`
-- [ ] FATE 掷骰 `.rf`
+- [x] FATE 掷骰 `.rf`
 - [ ] WOD 骰池 `.w(w)`
 - [ ] COC 理智检定 `.sc`
 - [ ] COC 成长检定 `.en`
@@ -97,7 +97,8 @@ go-cqhttp下的文件 ([go-cqhttp](https://github.com/Mrs4s/go-cqhttp) 的可执
 
 ### Thanks
 
-- @w4123 溯洄，Dice! 与 Dice3 的开发者，本项目命令格式大部分借鉴自其。
+- @w4123 溯洄，Dice! 的主要开发者与 Dice3 的开发者，本项目命令格式大部分借鉴自其。
+- @mystringEmpty Dice! 的另一名主要开发者。
 - @233a344a455 DeltaBot的开发者，本项目的 bot_control 插件修改自其。
 
 ### Nothing useful
