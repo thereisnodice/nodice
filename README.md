@@ -46,8 +46,8 @@
 - [ ] COC 房规 `.setcoc`
 - [ ] DND 先攻 `.ri` 
 - [ ] 先攻列表 `.init`
-- [x] FATE 掷骰 `.rf`
-- [ ] WOD 骰池 `.w(w)`
+- [x] FATE 掷骰 `.rf(h) reason`
+- [x] WOD 骰池 `.w(h) 5a10 reason`
 - [ ] COC 理智检定 `.sc`
 - [ ] COC 成长检定 `.en`
 - [ ] COC 奖惩骰 `.rb/p`

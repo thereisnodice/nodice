@@ -58,34 +58,7 @@ class FateCalculator:
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'-'+r.source
                 self.detail=l.detail+'-'+r.detail
-        elif '*' in expression:
-            l=FateCalculator(expression[:expression.index('*')])
-            r=FateCalculator(expression[expression.index('*')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
-            self.result=l.result*r.result
-            if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'*'+r.source
-                self.detail=l.detail+'*'+r.detail
-        elif '/' in expression:
-            l=FateCalculator(expression[:expression.index('/')])
-            r=FateCalculator(expression[expression.index('/')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
-            self.result=l.result/r.result
-            if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'/'+r.source
-                self.detail=l.detail+'/'+r.detail
-        elif '^' in expression:
-            l=FateCalculator(expression[:expression.index('^')])
-            r=FateCalculator(expression[expression.index('^')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
-            self.result=l.result**r.result
-            if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'^'+r.source
-                self.detail=l.detail+'^'+r.detail
-        elif re.search(r"([0-9]*)df",expression) or expression=='':
+        elif re.search(r"([0-9]*)df?",expression) or expression=='':
             self.throw_dice()
         else:
             self.result=float(expression)
@@ -95,7 +68,7 @@ class FateCalculator:
     def throw_dice(self):
 
         # 匹配正则
-        match_result=re.search(r"([0-9]*)df",self.expression)
+        match_result=re.search(r"([0-9]*)df?",self.expression)
 
         # 获取骰数，获取不到默认为4，超过100或等于0报错
         try:dice_num=int(match_result.group(1))
@@ -105,22 +78,17 @@ class FateCalculator:
         # FATE的独特骰子
         fate_dice_list=['-','o','+']
 
-        # 模拟现实掷骰
-        dice_result_list=[]
-        for i in range(dice_num):
-            dice_result=random.randint(-1,1)
-            dice_result_list.append(dice_result)
-
         # 消息初始化
         self.source=str(dice_num)+'DF'
         self.detail='['
 
-        # 统计骰子以及计算过程
+        # 模拟现实掷骰并统计
         dice_count=0
         for i in range(dice_num):
             if i:self.detail+=' '
-            self.detail+=fate_dice_list[dice_result_list[i]+1]
-            dice_count+=dice_result_list[i]
+            dice_result=random.randint(-1,1)
+            self.detail+=fate_dice_list[dice_result+1]
+            dice_count+=dice_result
         self.detail+=']'
         self.result=dice_count
 
