@@ -40,6 +40,7 @@ class Calculator:
     def calculate_without_bracket(self):
 
         expression=self.expression
+
         if '+' in expression:
             l=Calculator(expression[:expression.index('+')])
             r=Calculator(expression[expression.index('+')+1:])
@@ -56,8 +57,8 @@ class Calculator:
             r.calculate_without_bracket()
             self.result=l.result-r.result
             if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'+'+r.source
-                self.detail=l.detail+'+'+r.detail
+                self.source=l.source+'-'+r.source
+                self.detail=l.detail+'-'+r.detail
         elif '*' in expression:
             l=Calculator(expression[:expression.index('*')])
             r=Calculator(expression[expression.index('*')+1:])
@@ -65,8 +66,8 @@ class Calculator:
             r.calculate_without_bracket()
             self.result=l.result*r.result
             if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'+'+r.source
-                self.detail=l.detail+'+'+r.detail
+                self.source=l.source+'*'+r.source
+                self.detail=l.detail+'*'+r.detail
         elif '/' in expression:
             l=Calculator(expression[:expression.index('/')])
             r=Calculator(expression[expression.index('/')+1:])
@@ -74,8 +75,8 @@ class Calculator:
             r.calculate_without_bracket()
             self.result=l.result/r.result
             if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'+'+r.source
-                self.detail=l.detail+'+'+r.detail
+                self.source=l.source+'/'+r.source
+                self.detail=l.detail+'/'+r.detail
         elif '^' in expression:
             l=Calculator(expression[:expression.index('^')])
             r=Calculator(expression[expression.index('^')+1:])
@@ -83,8 +84,8 @@ class Calculator:
             r.calculate_without_bracket()
             self.result=l.result**r.result
             if 'D' in l.source or 'D' in r.source:
-                self.source=l.source+'+'+r.source
-                self.detail=l.detail+'+'+r.detail
+                self.source=l.source+'^'+r.source
+                self.detail=l.detail+'^'+r.detail
         elif re.search(r"([0-9]*)d([0-9]*)(k([0-9]*))?",expression) or expression=='':
             self.throw_dice()
         else:
@@ -136,39 +137,41 @@ class Calculator:
         self.detail+=']'
         self.result=dice_count
 
-# 提取出轮数和掷骰原因
-def extract_roundnum_and_reason(expression):
+    # 提取出轮数和掷骰原因
+    def extract_roundnum_and_reason(self):
 
-    # 匹配正则
-    match_result=re.search(r"(([0-9]+)#)?([dk0-9\.+\-*/\^\(\)]*)(.*)",expression)
+        expression=self.expression
 
-    # 获取轮数，获取不到默认为1，超过10或等于0报错
-    try:round_num=int(match_result.group(2))
-    except:round_num=1
-    if not round_num or round_num>10:return '非法轮数'
+        # 匹配正则
+        match_result=re.search(r"(([0-9]+)#)?([dk0-9\.+\-*/\^\(\)]*)(.*)",expression)
 
-    # 获取表达式
-    expression=match_result.group(3).strip().lower()
+        # 获取轮数，获取不到默认为1，超过10或等于0报错
+        try:round_num=int(match_result.group(2))
+        except:round_num=1
+        if not round_num or round_num>10:return '非法轮数'
 
-    # 初始化Calculator类
-    calculator=Calculator(expression)
+        # 获取表达式
+        expression=match_result.group(3).strip().lower()
 
-    # 获取掷骰原因，获取不到默认为空
-    try:roll_reason=match_result.group(4).strip()
-    except:roll_reason=''
+        # 初始化Calculator类
+        calculator=Calculator(expression)
 
-    # 返回消息
-    message=''
-    if roll_reason!='':message+='由于'+roll_reason
-    message+='掷出了:'
-    for i in range(round_num):
-        calculator.calculate_with_bracket()
-        message+='\n'+calculator.source
-        if is_show_detail:message+='='+calculator.detail
-        message+='='+str(int(calculator.result))
-    return message
+        # 获取掷骰原因，获取不到默认为空
+        try:roll_reason=match_result.group(4).strip()
+        except:roll_reason=''
+
+        # 返回消息
+        message=''
+        if roll_reason!='':message+='由于'+roll_reason
+        message+='掷出了:'
+        for i in range(round_num):
+            calculator.calculate_with_bracket()
+            message+='\n'+calculator.source
+            if is_show_detail:message+='='+calculator.detail
+            message+='='+str(int(calculator.result))
+        return message
 
 # 调试用
 if __name__=='__main__':
     while(True):
-        print(extract_roundnum_and_reason(input()))
+        print(Calculator(input()).extract_roundnum_and_reason())
