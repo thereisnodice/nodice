@@ -44,7 +44,7 @@
 - [ ] 设置默认骰 `.set`
 - [ ] COC 检定 `.ra(h)`
 - [ ] COC 房规 `.setcoc`
-- [ ] DND 先攻 `.ri` 
+- [ ] DND 先攻 `.ri`
 - [ ] 先攻列表 `.init`
 - [x] FATE 掷骰 `.rf(h) reason`
 - [x] WOD 骰池 `.w(h) 5a10 reason`

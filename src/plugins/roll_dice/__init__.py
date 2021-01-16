@@ -1,7 +1,5 @@
 from nonebot import on_command, CommandSession
-from .calculator import Calculator
-from .fate_calculator import FateCalculator
-from .wod_calculator import WodCalculator
+from .calculator import BaseCalculator,FateCalculator,WodCalculator,CocCalculator
 
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
@@ -13,16 +11,16 @@ __plugin_usage__ = (
 @on_command('roll', aliases=('r','掷骰'),only_to_me=False)
 async def roll(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
-    await session.send(Calculator(dice_expression).extract_roundnum_and_reason())
+    await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_hide', aliases=('rh','暗骰'),only_to_me=False)
 async def roll_hide(session: CommandSession):
     dice_expression = session.current_arg_text.strip()
     if session.event.message_type=='group':
         await session.send('在群聊'+str(session.event.group_id)+'中暗骰，'
-                        +Calculator(dice_expression).extract_roundnum_and_reason(),ensure_private=True)
+                        +BaseCalculator(dice_expression).extract_roundnum_and_reason(),ensure_private=True)
     else:
-        await session.send(Calculator(dice_expression).extract_roundnum_and_reason())
+        await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_fate', aliases=('rf','fate'),only_to_me=False)
 async def roll_fate(session: CommandSession):
@@ -51,3 +49,13 @@ async def roll_wod_hide(session: CommandSession):
                         +WodCalculator(dice_expression).extract_roundnum_and_reason(),ensure_private=True)
     else:
         await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
+
+'''
+@on_command('roll_check', aliases=('rc','ra','检定'),only_to_me=False)
+async def roll_check(session: CommandSession):
+    try:
+        dice_expression = int(session.current_arg_text.strip())
+    except:
+        dice_expression=60
+    await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
+'''
