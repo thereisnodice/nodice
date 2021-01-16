@@ -6,13 +6,13 @@ import os
 
 __plugin_name__ = '[A]机器人控制'
 __plugin_usage__ = """
-[A]bot 查看版本信息
-[A]bot reload 重载插件
-[EA]bot update 使用git pull更新
+[A]admin 查看版本信息
+[A]admin reload 重载插件
+[EA]admin update 使用git pull更新
 """
 
-@on_command('bot', permission=permission.SUPERUSER)
-async def bot(session: CommandSession):
+@on_command('admin', permission=permission.SUPERUSER)
+async def admin(session: CommandSession):
     arg=session.current_arg.strip()
     if arg=='reload':await reload(session)
     elif arg=='update':await update(session)
