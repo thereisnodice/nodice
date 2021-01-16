@@ -46,9 +46,9 @@ class WodCalculator:
                 if i:self.detail+=' '
                 self.detail+=str(dice_result)
                 if dice_result>=dice_diff:dice_num+=1
+                if dice_result>=8:dice_count+=1
             self.detail+=']'
             dice_num=dice_num-i-1
-            dice_count+=dice_num
             
         self.result=dice_count
 
