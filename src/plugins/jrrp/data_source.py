@@ -41,4 +41,4 @@ def get_jrrp(bot_qq_id,qq_id):
         return get_jrrp_local(qq_id)
 
 if __name__=='__main__':
-    print(get_jrrp_online()
+    print(get_jrrp('1234567890','1234567890'))
