@@ -38,7 +38,7 @@ async def reload(session: CommandSession):
 async def update(session: CommandSession):
     await session.send("Start pulling from git ...")
     try:
-        output = subprocess.run(['git', 'pull'], stdout=PIPE, stderr=STDOUT).stdout.decode('utf-8').strip()
+        output = subprocess.run(['git','pull','origin','master'], stdout=PIPE, stderr=STDOUT).stdout.decode('utf-8').strip()
         msg = output.replace('https://', '').replace('http://', '') # 防止QQ将链接渲染为卡片
         await session.send(msg.strip())
         await reload(session)
