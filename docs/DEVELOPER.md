@@ -4,6 +4,7 @@
 - 链接 sqlite3 数据库
 - 接入数据库的群管功能
 - 接入数据库的人物卡功能
+- 把requests换成httpx
 - 所有的异常处理
 - Dice! 556 mod 形式的help功能
 - Dice! 2.5 的lua脚本
