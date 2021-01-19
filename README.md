@@ -42,7 +42,7 @@
 
 - [x] 标准掷骰 `.r(h) 4#3d6k2+5 reason`
 - [ ] 设置默认骰 `.set`
-- [ ] COC 检定 `.ra(h)`
+- [x] COC 检定 `.ra(h)`
 - [ ] COC 房规 `.setcoc`
 - [ ] DND 先攻 `.ri`
 - [ ] 先攻列表 `.init`

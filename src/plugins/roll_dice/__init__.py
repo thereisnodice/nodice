@@ -50,12 +50,7 @@ async def roll_wod_hide(session: CommandSession):
     else:
         await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
 
-'''
 @on_command('roll_check', aliases=('rc','ra','检定'),only_to_me=False)
 async def roll_check(session: CommandSession):
-    try:
-        dice_expression = int(session.current_arg_text.strip())
-    except:
-        dice_expression=60
+    dice_expression = int(session.current_arg_text.strip())
     await session.send(WodCalculator(dice_expression).extract_roundnum_and_reason())
-'''
