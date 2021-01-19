@@ -378,7 +378,8 @@ class CocCalculator(BaseCalculator):
         # 获取表达式
         attribute=match_result.group(3).strip().lower()
 
-        difficulty=int(match_result.group(4).strip())
+        try:difficulty=int(match_result.group(4).strip())
+        except:difficulty=0
 
         # 初始化CocCalculator类
         calculator=CocCalculator('d100')

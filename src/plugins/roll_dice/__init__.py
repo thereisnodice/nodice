@@ -52,7 +52,7 @@ async def roll_wod_hide(session: CommandSession):
 
 @on_command('roll_check', aliases=('rc','ra','检定'),only_to_me=False)
 async def roll_check(session: CommandSession):
-    dice_expression = int(session.current_arg_text.strip())
+    dice_expression = session.current_arg_text.strip()
     await session.send(CocCalculator(dice_expression).extract_roundnum_and_reason())
 
 @on_command('roll_check_hide', aliases=('rch','rah','暗中检定'),only_to_me=False)
