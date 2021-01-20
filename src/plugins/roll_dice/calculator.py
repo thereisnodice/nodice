@@ -363,12 +363,12 @@ class WodCalculator(BaseCalculator):
 class CocCalculator(BaseCalculator):
 
     # 提取出轮数和掷骰原因
-    def extract_roundnum_and_reason(self):
+    def roll_check(self):
 
         expression=self.expression
 
         # 匹配正则
-        match_result=re.search(r"(([0-9]+)#)?(.*?)([0-9]*)(.*)",expression)
+        match_result=re.search(r"(([0-9]+)#)?([^0-9]*)([0-9]*)(.*)",expression)
 
         # 获取轮数，获取不到默认为1，超过10或等于0报错
         try:round_num=int(match_result.group(2))
@@ -413,7 +413,83 @@ class CocCalculator(BaseCalculator):
                 message+= "大失败"
         return message
 
+    # 提取出轮数和掷骰原因
+    def develop_check(self):
+
+        expression=self.expression
+
+        # 匹配正则
+        match_result=re.search(r"([^0-9]*)([0-9]*)",expression)
+
+        # 获取表达式
+        attribute=match_result.group(1).strip().lower()
+
+        try:difficulty=int(match_result.group(2).strip())
+        except:difficulty=0
+
+        # 初始化CocCalculator类
+        calculator=CocCalculator('d100')
+
+        # 返回消息
+        message='进行'
+        if attribute!='':message+=attribute
+        message+='成长检定:'
+        calculator.throw_dice()
+        message+=calculator.source
+        message+='='+str(int(calculator.result))
+        message+='/'+str(difficulty)
+        if calculator.result>100 or calculator.result>difficulty:
+            message+=' 失败'
+        else:
+            message+=' 成功'
+            calculator=CocCalculator('d10')
+            calculator.throw_dice()
+            message+=' '+attribute+'增加'
+            message+=calculator.source
+            message+='='+str(int(calculator.result))
+        return message
+
+    # 提取出轮数和掷骰原因
+    def san_check(self):
+
+        expression=self.expression
+
+        # 匹配正则
+        match_result=re.search(r"([d0-9]*)/([d0-9]*)[\s]*([0-9]*)",expression)
+
+        # 获取表达式
+        calculator_success=CocCalculator(match_result.group(1).strip().lower())
+        calculator_fail=CocCalculator(match_result.group(2).strip().lower())
+
+        try:difficulty=int(match_result.group(3).strip())
+        except:difficulty=0
+
+        # 初始化CocCalculator类
+        calculator=CocCalculator('d100')
+
+        # 返回消息
+        message='进行理智检定:'
+        calculator.throw_dice()
+        message+=calculator.source
+        message+='='+str(int(calculator.result))
+        message+='/'+str(difficulty)
+        if calculator.result==100 or (calculator.result>=95 and difficulty<50):
+            message+=' 大失败 理智减少'
+            message+=calculator_fail.expression[calculator_fail.expression.find('d')+1:]
+        elif calculator.result>difficulty:
+            message+=' 失败 理智减少'
+            calculator_fail.throw_dice()
+            message+=calculator_fail.source
+            message+='='+str(int(calculator_fail.result))
+        else:
+            message+=' 成功 理智减少'
+            calculator_success.throw_dice()
+            message+=calculator_success.source
+            message+='='+str(int(calculator_success.result))
+
+        return message
+
 # 调试用
 if __name__=='__main__':
     while(True):
-        print(CocCalculator(input()).extract_roundnum_and_reason())
+        print(CocCalculator(input()).san_check())
