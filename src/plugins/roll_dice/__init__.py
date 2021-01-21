@@ -1,6 +1,5 @@
 from nonebot import on_command, CommandSession
-from .calculator import BaseCalculator,FateCalculator,WodCalculator,CocCalculator,DndCalculator
-
+from .calculator import BaseCalculator,FateCalculator,WodCalculator,CocCalculator
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
     '用法：\n'
