@@ -2,10 +2,10 @@ import json
 import time 
 import os
 import random
-import requests
+import httpx
 
 # 是否使用溯洄的API以达到与Dice!同步的目的
-IS_ONLINE=False
+IS_ONLINE=True
 
 def get_jrrp_local(qq_id):
     day=str(time.localtime(time.time())[2])
@@ -31,7 +31,7 @@ def get_jrrp_local(qq_id):
 def get_jrrp_online(bot_qq_id,qq_id):
     url='http://api.kokona.tech:5555/jrrp'
     data={'User-Agent':'NoDice','QQ':bot_qq_id,'v':'20190114','QueryQQ':qq_id}
-    res=requests.post(url=url,data=data)
+    res=httpx.post(url=url,data=data)
     return '你今天的人品值是：'+res.text
 
 def get_jrrp(bot_qq_id,qq_id):
