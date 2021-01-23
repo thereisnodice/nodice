@@ -78,12 +78,11 @@
 #### 拓展功能
 
 - [x] Git热更新 `.admin update`
-- [x] 重载插件 `.bot reload`
+- [x] 重载插件 `.admin reload`
 - [x] 天气查询 `.weather` （目前NLP有bug）
 - [x] 在线IDE `.exec python`
 - [ ] Github Webhook 推送
 - [ ] 各音乐平台点歌
-- [x] CSU课表查询 `.csu`（此功能不开源）
 
 ### Developer
 
