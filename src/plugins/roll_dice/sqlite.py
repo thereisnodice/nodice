@@ -63,6 +63,7 @@ def is_bot_on(group_id):
             return True if cur.fetchone()[0]==1 else False
     except:
         set_bot_on(group_id,True)
+        return True
 
 def set_bot_on(group_id,is_bot_on):
     try:
