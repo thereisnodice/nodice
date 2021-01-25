@@ -1,6 +1,6 @@
 from nonebot import on_command, CommandSession
 from .calculator import BaseCalculator,FateCalculator,WodCalculator,CocCalculator
-from .sqlite import is_bot_on
+from .sqlite import is_bot_on,set_default_dice,get_default_dice
 
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
@@ -13,7 +13,8 @@ __plugin_usage__ = (
 async def roll(session: CommandSession):
     if not is_bot_on(session.event.group_id):return
     dice_expression = session.current_arg_text.strip()
-    await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason())
+    default_dice=get_default_dice(session.event.group_id)
+    await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason(default_dice))
 
 @on_command('roll_hide', aliases=('rh','暗骰'),only_to_me=False)
 async def roll_hide(session: CommandSession):
@@ -23,6 +24,13 @@ async def roll_hide(session: CommandSession):
                         +BaseCalculator(dice_expression).extract_roundnum_and_reason(),ensure_private=True)
     else:
         await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason())
+
+@on_command('set',only_to_me=False)
+async def set(session: CommandSession):
+    try:default_dice = int(session.current_arg_text.strip())
+    except:default_dice = 100
+    set_default_dice(session.event.group_id,default_dice)
+    await session.send(f'已将本群默认骰设为{default_dice}')
 
 @on_command('roll_fate', aliases=('rf','fate'),only_to_me=False)
 async def roll_fate(session: CommandSession):

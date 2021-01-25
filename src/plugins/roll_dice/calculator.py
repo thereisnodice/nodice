@@ -17,7 +17,7 @@ class BaseCalculator:
         return f'{self.expression},{self.source},{self.detail},{self.result}'
 
     # 计算有括号的表达式
-    def calculate_with_bracket(self):
+    def calculate_with_bracket(self,default_dice):
        
         expression=self.expression
         try:
@@ -25,27 +25,27 @@ class BaseCalculator:
             r=BaseCalculator(expression[expression.index(')')+1:])
             m=BaseCalculator(l.expression[l.expression.rindex('(')+1:])
             l=BaseCalculator(l.expression[:l.expression.rindex('(')])
-            m.calculate_without_bracket()
+            m.calculate_without_bracket(default_dice)
             tmp=BaseCalculator(l.expression+str(m.result)+r.expression)
-            tmp.calculate_with_bracket()
+            tmp.calculate_with_bracket(default_dice)
             self.result=tmp.result
             if 'D' in l.source or 'D' in m.source or 'D' in r.source:
                 self.source=l.source+m.source+r.source
                 self.detail=l.detail+m.detail+r.detail
         except:
-            self.calculate_without_bracket()
+            self.calculate_without_bracket(default_dice)
         #print(str(self))
 
     # 计算无括号的表达式
-    def calculate_without_bracket(self):
+    def calculate_without_bracket(self,default_dice):
 
         expression=self.expression
 
         if '+' in expression:
             l=BaseCalculator(expression[:expression.index('+')])
             r=BaseCalculator(expression[expression.index('+')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
+            l.calculate_without_bracket(default_dice)
+            r.calculate_without_bracket(default_dice)
             self.result=l.result+r.result
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'+'+r.source
@@ -53,8 +53,8 @@ class BaseCalculator:
         elif '-' in expression:
             l=BaseCalculator(expression[:expression.index('-')])
             r=BaseCalculator(expression[expression.index('-')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
+            l.calculate_without_bracket(default_dice)
+            r.calculate_without_bracket(default_dice)
             self.result=l.result-r.result
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'-'+r.source
@@ -62,8 +62,8 @@ class BaseCalculator:
         elif '*' in expression:
             l=BaseCalculator(expression[:expression.index('*')])
             r=BaseCalculator(expression[expression.index('*')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
+            l.calculate_without_bracket(default_dice)
+            r.calculate_without_bracket(default_dice)
             self.result=l.result*r.result
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'*'+r.source
@@ -71,8 +71,8 @@ class BaseCalculator:
         elif '/' in expression:
             l=BaseCalculator(expression[:expression.index('/')])
             r=BaseCalculator(expression[expression.index('/')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
+            l.calculate_without_bracket(default_dice)
+            r.calculate_without_bracket(default_dice)
             self.result=l.result/r.result
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'/'+r.source
@@ -80,19 +80,19 @@ class BaseCalculator:
         elif '^' in expression:
             l=BaseCalculator(expression[:expression.index('^')])
             r=BaseCalculator(expression[expression.index('^')+1:])
-            l.calculate_without_bracket()
-            r.calculate_without_bracket()
+            l.calculate_without_bracket(default_dice)
+            r.calculate_without_bracket(default_dice)
             self.result=l.result**r.result
             if 'D' in l.source or 'D' in r.source:
                 self.source=l.source+'^'+r.source
                 self.detail=l.detail+'^'+r.detail
         elif re.search(r"([0-9]*)d([0-9]*)(k([0-9]*))?",expression) or expression=='':
-            self.throw_dice()
+            self.throw_dice(default_dice)
         else:
             self.result=float(expression)
 
     # 掷骰
-    def throw_dice(self):
+    def throw_dice(self,default_dice):
 
         # 匹配正则
         match_result=re.search(r"([0-9]*)d([0-9]*)(k([0-9]*))?",self.expression)
@@ -104,7 +104,7 @@ class BaseCalculator:
 
         # 获取骰面，获取不到默认为100，超过1000或等于0报错
         try:dice_face=int(match_result.group(2))
-        except:dice_face=100
+        except:dice_face=default_dice
         if not dice_face or dice_face>1000:return '非法骰面'
 
         # 获取有效骰数，获取不到默认为骰数，超过骰数或等于0报错
@@ -137,7 +137,7 @@ class BaseCalculator:
         self.result=dice_count
 
     # 提取出轮数和掷骰原因
-    def extract_roundnum_and_reason(self):
+    def extract_roundnum_and_reason(self,default_dice):
 
         expression=self.expression
 
@@ -164,7 +164,7 @@ class BaseCalculator:
         if roll_reason!='':message+='由于'+roll_reason
         message+='掷出了:'
         for i in range(round_num):
-            calculator.calculate_with_bracket()
+            calculator.calculate_with_bracket(default_dice)
             message+='\n'+calculator.source
             if is_show_detail:message+='='+calculator.detail
             message+='='+str(int(calculator.result))

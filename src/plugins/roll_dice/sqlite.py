@@ -74,6 +74,26 @@ def set_bot_on(group_id,is_bot_on):
         cur=conn.cursor()
         cur.execute(f"UPDATE group_info SET bot_on={1 if is_bot_on else 0} WHERE group_id = {group_id}")
         conn.commit()
+
+def get_default_dice(group_id):
+    try:
+        with sqlite3.connect(db_file) as conn:
+            cur=conn.cursor()
+            cur.execute(f"SELECT default_dice FROM group_info WHERE group_id = {group_id}")
+            return cur.fetchone()[0]
+    except:
+        insert_group_info(group_id)
+        return 100
+
+def set_default_dice(group_id,default_dice):
+    try:
+        insert_group_info(group_id)
+    except:
+        pass
+    with sqlite3.connect(db_file) as conn:
+        cur=conn.cursor()
+        cur.execute(f"UPDATE group_info SET default_dice={default_dice} WHERE group_id = {group_id}")
+        conn.commit()
         
 
 if __name__=='__main__':
