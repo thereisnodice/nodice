@@ -74,7 +74,7 @@
 
 - [x] 骰子开关 `.bot on/off`
 - [x] 退群指令  `.dismiss`
-- [ ] 欢迎词 `.welcome`
+- [x] 欢迎词 `.welcome`
 - [ ] 群管理操作 `.group` 
 - [ ] 跑团记录 `.log`
 - [ ] 旁观者模式 `.ob`

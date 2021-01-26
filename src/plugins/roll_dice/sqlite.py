@@ -55,7 +55,7 @@ def insert_group_info(group_id):
         cur=conn.cursor()
         cur.execute(f"INSERT INTO group_info (group_id) VALUES ({group_id})")
 
-def is_bot_on(group_id):
+def get_bot_on(group_id):
     try:
         with sqlite3.connect(db_file) as conn:
             cur=conn.cursor()
@@ -73,6 +73,26 @@ def set_bot_on(group_id,is_bot_on):
     with sqlite3.connect(db_file) as conn:
         cur=conn.cursor()
         cur.execute(f"UPDATE group_info SET bot_on={1 if is_bot_on else 0} WHERE group_id = {group_id}")
+        conn.commit()
+
+def get_jrrp_on(group_id):
+    try:
+        with sqlite3.connect(db_file) as conn:
+            cur=conn.cursor()
+            cur.execute(f"SELECT jrrp_on FROM group_info WHERE group_id = {group_id}")
+            return True if cur.fetchone()[0]==1 else False
+    except:
+        set_bot_on(group_id,True)
+        return True
+
+def set_jrrp_on(group_id,is_jrrp_on):
+    try:
+        insert_group_info(group_id)
+    except:
+        pass
+    with sqlite3.connect(db_file) as conn:
+        cur=conn.cursor()
+        cur.execute(f"UPDATE group_info SET jrrp_on={1 if is_jrrp_on else 0} WHERE group_id = {group_id}")
         conn.commit()
 
 def get_default_dice(group_id):
@@ -97,7 +117,7 @@ def set_default_dice(group_id,default_dice):
         
 
 if __name__=='__main__':
-    print(is_bot_on(666))
+    print(get_bot_on(666))
     
 
 

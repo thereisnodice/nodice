@@ -1,6 +1,6 @@
 from nonebot import on_command, CommandSession
 from .calculator import BaseCalculator,FateCalculator,WodCalculator,CocCalculator
-from .sqlite import is_bot_on,set_default_dice,get_default_dice
+from .sqlite import get_bot_on,set_default_dice,get_default_dice
 
 __plugin_name__ = '掷骰'
 __plugin_usage__ = (
@@ -11,7 +11,7 @@ __plugin_usage__ = (
 
 @on_command('roll', aliases=('r','掷骰'),only_to_me=False)
 async def roll(session: CommandSession):
-    if not is_bot_on(session.event.group_id):return
+    if not get_bot_on(session.event.group_id):return
     dice_expression = session.current_arg_text.strip()
     default_dice=get_default_dice(session.event.group_id)
     await session.send(BaseCalculator(dice_expression).extract_roundnum_and_reason(default_dice))
