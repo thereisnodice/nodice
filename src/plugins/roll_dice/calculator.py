@@ -17,7 +17,7 @@ class BaseCalculator:
         return f'{self.expression},{self.source},{self.detail},{self.result}'
 
     # 计算有括号的表达式
-    def calculate_with_bracket(self,default_dice):
+    def calculate_with_bracket(self,default_dice=100):
        
         expression=self.expression
         try:
@@ -37,7 +37,7 @@ class BaseCalculator:
         #print(str(self))
 
     # 计算无括号的表达式
-    def calculate_without_bracket(self,default_dice):
+    def calculate_without_bracket(self,default_dice=100):
 
         expression=self.expression
 
@@ -92,7 +92,7 @@ class BaseCalculator:
             self.result=float(expression)
 
     # 掷骰
-    def throw_dice(self,default_dice):
+    def throw_dice(self,default_dice=100):
 
         # 匹配正则
         match_result=re.search(r"([0-9]*)d([0-9]*)(k([0-9]*))?",self.expression)
@@ -137,7 +137,7 @@ class BaseCalculator:
         self.result=dice_count
 
     # 提取出轮数和掷骰原因
-    def extract_roundnum_and_reason(self,default_dice):
+    def extract_roundnum_and_reason(self,default_dice=100):
 
         expression=self.expression
 
