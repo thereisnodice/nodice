@@ -1,6 +1,5 @@
 # go-cqhttp
-/go-cqhttp/*
-!go-cqhttp.exe
+go-cqhttp
 
 # 配置文件
 config.py
