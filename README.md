@@ -7,14 +7,13 @@
 
 ~~然而会有一些奇奇怪怪的扩展功能~~
 
-<font color=red>**目前还处于开发状态，不建议使用。**</font>
+<font color=red>**已停止开发，建议使用 [ nodice2 ](https://github.com/thereisnodice/nodice2)。**</font>
 
 [![License](https://img.shields.io/github/license/thereisnodice/nodice)](LICENSE)
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
 ![NoneBot Version](https://img.shields.io/badge/nonebot-1.8+-red.svg)
 ![OneBot Version](https://img.shields.io/badge/OneBot-v11-black)
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
-
 
 </div>
 
@@ -94,9 +93,7 @@
 
 ### Lisence
 
-go-cqhttp下的文件 ([go-cqhttp](https://github.com/Mrs4s/go-cqhttp) 的可执行程序) 保持使用原 [AGPL-3.0 License](https://github.com/Mrs4s/go-cqhttp/blob/master/LICENSE) 许可
-
-项目中其余内容使用 [MIT License](LICENSE)
+[MIT License](LICENSE)
 
 ### Thanks
 

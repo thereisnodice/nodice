@@ -1,3 +1,5 @@
+# 已停止开发，具体请看 Project for nonebot2 ！
+
 ### TO DO List
 
 - 链接 sqlite3 数据库
