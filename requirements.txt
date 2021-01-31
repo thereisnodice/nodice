@@ -1,3 +1,4 @@
-pyyaml
-nonebot
-requests
+pyyaml==5.3.1
+nonebot==1.8.1
+requests==2.24.0
+httpx=0.16.1
